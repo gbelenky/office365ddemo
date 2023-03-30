@@ -25,7 +25,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Easy Zip Files
-        uses: vimtor/action-zip@v1
+        uses: vimtor/action-zip@v1.1
         with:
           dest: ${{ github.run_id }}.zip
           files: ./
@@ -47,5 +47,5 @@ jobs:
        uses: Azure/functions-action@v1
        id: la
        with:
-        app-name: ${{github.event.inputs.RG_LA}}
+        app-name: logicapp-office365-dev
         package: build-art/${{ github.run_id }}.zip
