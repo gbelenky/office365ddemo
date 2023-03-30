@@ -1,0 +1,54 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Compose": {
+                "type": "Compose",
+                "inputs": "@triggerBody()",
+                "runAfter": {}
+            }
+        },
+        "triggers": {
+            "When_a_new_email_arrives_(V3)": {
+                "type": "ApiConnectionNotification",
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "referenceName": "office365"
+                        }
+                    },
+                    "fetch": {
+                        "queries": {
+                            "folderPath": "Inbox",
+                            "importance": "Any",
+                            "fetchOnlyWithAttachment": false,
+                            "includeAttachments": false
+                        },
+                        "pathTemplate": {
+                            "template": "/v3/Mail/OnNewEmail"
+                        },
+                        "method": "get"
+                    },
+                    "subscribe": {
+                        "queries": {
+                            "folderPath": "Inbox",
+                            "importance": "Any",
+                            "fetchOnlyWithAttachment": false
+                        },
+                        "body": {
+                            "NotificationUrl": "@{listCallbackUrl()}"
+                        },
+                        "pathTemplate": {
+                            "template": "/GraphMailSubscriptionPoke/$subscriptions"
+                        },
+                        "method": "post"
+                    }
+                },
+                "splitOn": "@triggerBody()?['value']"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {}
+    },
+    "kind": "Stateful"
+}
