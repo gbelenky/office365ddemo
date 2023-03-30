@@ -43,9 +43,14 @@ jobs:
        with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
 
+     - uses: actions/download-artifact@master
+       with:
+        name: build-artifact
+        path: build-art/
+
      - name: Deploy to Azure Logic App
        uses: Azure/functions-action@v1
        id: la
        with:
         app-name: logicapp-office365-dev
-        package: ${{ github.run_id }}.zip
+        package: build-art/${{ github.run_id }}.zip
