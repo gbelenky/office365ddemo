@@ -40,7 +40,7 @@ stages:
               scriptType: bash
               scriptLocation: inlineScript
               inlineScript: |
-                cd bicep
+                cd Bicep
                 az deployment group create --name fnappdeploy -g $(resourceGroupName) --template-file fnapp.bicep
 
 
