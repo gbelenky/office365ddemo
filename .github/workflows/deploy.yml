@@ -28,7 +28,10 @@ jobs:
         uses: vimtor/action-zip@v1.1
         with:
           dest: ${{ github.run_id }}.zip
-          files: ./
+          files: host.json
+                connections.json
+                Artifacts/**/*
+                Office365/**
       - uses: actions/upload-artifact@master
         with:
           name: build-artifact
