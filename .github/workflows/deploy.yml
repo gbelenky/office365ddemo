@@ -48,4 +48,4 @@ jobs:
        id: la
        with:
         app-name: logicapp-office365-dev
-        package: build-art/${{ github.run_id }}.zip
+        package: ${{ github.run_id }}.zip
