@@ -43,6 +43,15 @@ stages:
                 cd Bicep
                 az deployment group create --name fnappdeploy -g $(resourceGroupName) --template-file fnapp.bicep
 
+          - task: AzureCLI@2
+            displayName: 'Azure CLI Rename logic apps params files'
+            inputs:
+              azureSubscription: $(devAzureServiceConnection)
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                mv ./parameters.json ./parameters.local.json
+                mv ./parameters.portal.json ./parameters.json
 
           - task: CopyFiles@2
             displayName: 'Copy Logic App Files to logic-app'
@@ -53,6 +62,7 @@ stages:
                 connections.json
                 Artifacts/**/*
                 Office365/**
+                parameters.json
               TargetFolder: 'logic-app'
 
           - task: ArchiveFiles@2
