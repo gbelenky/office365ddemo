@@ -1,0 +1,18 @@
+{
+  "office-auth": {
+    "type": "Object",
+    "value": {
+      "scheme": "Key",
+      "parameter": "@appsetting('office365-connectionKey')",
+      "type": "Raw"
+    }
+  },
+  "workflow_resource_group": {
+    "type": "String",
+    "value": "@{appsetting('WORKFLOWS_RESOURCE_GROUP_NAME')}"
+  },
+  "workflow_subscription_id": {
+    "type": "String",
+    "value": "@{appsetting('WORKFLOWS_SUBSCRIPTION_ID')}"
+  }
+}
