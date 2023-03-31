@@ -50,13 +50,14 @@ stages:
               scriptType: bash
               scriptLocation: inlineScript
               inlineScript: |
+                cd logic
                 mv ./parameters.json ./parameters.local.json
                 mv ./parameters.portal.json ./parameters.json
 
           - task: CopyFiles@2
             displayName: 'Copy Logic App Files to logic-app'
             inputs:
-              SourceFolder: '$(System.DefaultWorkingDirectory)'
+              SourceFolder: '$(System.DefaultWorkingDirectory)/logic'
               Contents: |
                 host.json
                 connections.json
