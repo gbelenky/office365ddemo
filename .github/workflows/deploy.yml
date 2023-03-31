@@ -31,7 +31,7 @@ jobs:
     - name: Package logic app
       run: (mkdir -p ./output; zip -r ./output/logic.zip .)
     - name: Upload app zip package
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: logic
         path: ./output/ 
@@ -65,11 +65,11 @@ jobs:
               -ResourceGroupName ${{ env.RG_LA }} `
               -Name ${{ env.LA_NAME }}
           $profile = $profile.Replace("`r", "").Replace("`n", "")
-          Write-Output "::set-output name=profile::$profile"
+          Write-Output "profile=$profile" >> $GITHUB_OUTPUT
         azPSVersion: latest
 
     - name: Deploy to Azure Logic App
-      uses: Azure/functions-action@v1.3.1
+      uses: Azure/functions-action@v1.4.8
       id: la
       with:
         app-name: ${{env.RG_LA}}
