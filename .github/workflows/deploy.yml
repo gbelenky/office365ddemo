@@ -27,8 +27,7 @@ jobs:
       - name: Rename parameters file
         run: |
              mv ./parameters.json ./parameters.local.json
-             mv ./parameters.portal.json ./parameters.json
-      - name: Login to Azure
+             mv ./parameters.portal.json ./parameters.json    
       - uses: azure/login@v1
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
