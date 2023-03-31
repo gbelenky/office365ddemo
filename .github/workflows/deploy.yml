@@ -2,6 +2,10 @@
 
 name: CI
 
+env:
+  LA_NAME: 'logicapp-office365-dev'
+  RG_LA: 'rg-office365-demo'
+
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -16,27 +20,61 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  deploy:
-    # The type of runner that the job will run on
+  logic_app_build:
+    name: Build
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - name: Rename parameters file
-        run: |
-             mv ./parameters.json ./parameters.local.json
-             mv ./parameters.portal.json ./parameters.json    
-      - uses: azure/login@v1
-        with:
-          creds: ${{secrets.AZURE_CREDENTIALS}}
-      - name: Deploy to Azure Logic App
-        uses: Azure/functions-action@v1
-        id: la
-        with:
-          app-type: workflowapp
-          app-name: logicapp-office365-dev
-          package: .
+    - name: Checkout
+    - uses: actions/checkout@v3
+    - name: Rename parameters file
+      run: (mv ./parameters.json ./parameters.local.json; mv ./parameters.portal.json ./parameters.json)            
+    - name: Package logic app
+      run: (mkdir -p ./output; zip -r ./output/logic.zip .)
+    - name: Upload app zip package
+      uses: actions/upload-artifact@v2
+      with:
+        name: logic
+        path: ./output/ 
+        retention-days: 1
+
+  logic_app_deploy: 
+    name: Deploy 
+    runs-on: ubuntu-latest
+    needs: [logic_app_build]
+    environment: 
+      name: Dev
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v3  
+    - name: Login via Az module
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+        enable-AzPSSession: true 
+    - uses: actions/download-artifact@master
+      with:
+        name: logic
+        path: ./output/
+
+    - name: Get publish Profile
+      id: publishprofile
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          $profile = Get-AzWebAppPublishingProfile `
+              -ResourceGroupName ${{ env.RG_LA }} `
+              -Name ${{ env.LA_NAME }}
+          $profile = $profile.Replace("`r", "").Replace("`n", "")
+          Write-Output "::set-output name=profile::$profile"
+        azPSVersion: latest
+
+    - name: Deploy to Azure Logic App
+      uses: Azure/functions-action@v1.3.1
+      id: la
+      with:
+        app-name: ${{env.RG_LA}}
+        package: './output/logic.zip'
+        publish-profile: ${{steps.publishprofile.outputs.profile}}       
+
           
 
