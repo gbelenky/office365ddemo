@@ -28,9 +28,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Rename parameters file
-      run: (mv ./parameters.json ./parameters.local.json; mv ./parameters.portal.json ./parameters.json)            
+      run: (mv ./logic/parameters.json ./logic/parameters.local.json; mv ./logic/parameters.portal.json ./logic/parameters.json)            
     - name: Package logic app
-      run: (mkdir -p ./output; zip -r ./output/logic.zip .)
+      run: (cd logic; mkdir -p ../output; zip -r ../output/logic.zip .)
     - name: Upload app zip package
       uses: actions/upload-artifact@v3
       with:
