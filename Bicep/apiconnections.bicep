@@ -31,4 +31,6 @@ output apiKey string = key
 var url = office365conn.properties.connectionRuntimeUrl
 output connRuntimeUrl string = any(url)
 
+output connName string = office365conn.name
+
 
