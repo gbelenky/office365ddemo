@@ -148,4 +148,14 @@ resource siteLogicApp 'Microsoft.Web/sites@2021-02-01' = {
   }
 }
 
+module accesspolicy 'apiaccesspolicy.bicep' = {
+  name: '${deployment().name}-apiPolicyDeploy'
+  params: {
+    connection_Name: apiconn.name
+    systemAssignedIdentityObjectId: siteLogicApp.identity.principalId
+    systemAssignedIdentityTenantId: siteLogicApp.identity.tenantId
+    location: location
+  }
+}
+
 
