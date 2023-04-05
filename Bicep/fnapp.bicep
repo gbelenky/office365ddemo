@@ -4,7 +4,7 @@ param environment string = 'dev'  /// Use prod for production
 param location string = resourceGroup().location
 param storageAccountSku string = 'Standard_LRS'
 
-var name = 'office365'
+var name = 'office365gb2'
 var logicAppName = 'logicapp-${name}-${environment}'
 var minimumElasticSize = 1
 var maximumElasticSize = 3
