@@ -71,6 +71,9 @@ resource logicAppStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 
 module apiconn 'apiconnections.bicep' = {
   name: '${deployment().name}-apiConnDeploy'
+  params: {
+    location: location
+  }
 }
 // App service containing the workflow runtime ///
 resource siteLogicApp 'Microsoft.Web/sites@2021-02-01' = {
@@ -98,11 +101,11 @@ resource siteLogicApp 'Microsoft.Web/sites@2021-02-01' = {
         }
         {
           name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${logicAppStorage.name};AccountKey=${listKeys(logicAppStorage.id, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${logicAppStorage.name};AccountKey=${logicAppStorage.listKeys().keys[0].value};EndpointSuffix=core.windows.net'
         }
         {
           name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${logicAppStorage.name};AccountKey=${listKeys(logicAppStorage.id, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${logicAppStorage.name};AccountKey=${logicAppStorage.listKeys().keys[0].value};EndpointSuffix=core.windows.net'
         }
         {
           name: 'WEBSITE_CONTENTSHARE'

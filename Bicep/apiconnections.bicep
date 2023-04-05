@@ -1,5 +1,5 @@
 targetScope= 'resourceGroup'
-param location string = resourceGroup().location
+param location string
 param connName string = 'office365'
 
 var resourceType  = 'Microsoft.Web/locations/managedApis'
