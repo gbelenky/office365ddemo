@@ -3,7 +3,7 @@
 name: CI
 
 env:
-  LA_NAME: 'logicapp-office365-dev'
+  LA_NAME: 'logicapp-office365gb2-dev'
   RG_LA: 'rg-office365-demo'
 
 
