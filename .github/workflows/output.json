@@ -1,0 +1,78 @@
+{
+    "id": "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-office365-demo/providers/Microsoft.Resources/deployments/apiconnections",
+    "location": null,
+    "name": "apiconnections",
+    "properties": {
+      "correlationId": "55ba3583-247b-488b-9cda-3023630f745a",
+      "debugSetting": null,
+      "dependencies": [],
+      "duration": "PT1.4644466S",
+      "error": null,
+      "mode": "Incremental",
+      "onErrorDeployment": null,
+      "outputResources": [
+        {
+          "id": "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-office365-demo/providers/Microsoft.Web/connections/office365",
+          "resourceGroup": "rg-office365-demo"
+        }
+      ],
+      "outputs": {
+        "apiKey": {
+          "type": "String",
+          "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkZBQzE2RjU5RTI5NUQ0QzU3OEVFNTY3NzJBMTIxQkY4N0FCNEY4MDQiLCJ4NXQiOiItc0Z2V2VLVjFNVjQ3bFozS2hJYi1IcTAtQVEiLCJ0eXAiOiJKV1QifQ.eyJ0cyI6IjI1MGE0N2JiLTE2ZTYtNGQ4Ny1hMWFjLWU5OTdmMmY3NjJkMiIsImNzIjoibG9naWMtYXBpcy11a3NvdXRoL29mZmljZTM2NS8yZWY1MTBkOTU4Y2I0NGJjOGQzZWM5YmI4YTZmMzJhOSIsInYiOiItOTIyMzM3MjAzNjg1NDc3NTgwOCIsImVudmlkIjoiMjAxZTViZWY3ZjBhMWY2ZSIsImF1ZCI6Imh0dHBzOi8vMjAxZTViZWY3ZjBhMWY2ZS4wOC5jb21tb24ubG9naWMtdWtzb3V0aC5henVyZS1hcGlodWIubmV0L2FwaW0vb2ZmaWNlMzY1LzJlZjUxMGQ5NThjYjQ0YmM4ZDNlYzliYjhhNmYzMmE5IiwibWFuYWdlbWVudCI6Imh0dHBzOi8vbWFuYWdlbWVudC5sb2dpYy11a3NvdXRoLmF6dXJlLWFwaWh1Yi5uZXQvIiwibmJmIjoxNjgwNjk4MDYxLCJleHAiOjE2ODMyOTAwNjEsImlhdCI6MTY4MDY5ODA2MSwiaXNzIjoiaHR0cHM6Ly9sb2dpYy1hcGlzLXVrc291dGguYXp1cmUtYXBpbS5uZXQvIn0.jb29iTO3EQb2SjmZZg3Ud3NPMDvinY9UylxHl1NYPCvL7yc1hkIZWDTv2rqP4zmRzqRMqe0_RtRdnwDogzE55SfUue8fKzeeUeau_tp7oqCEvW22_O_pP8BTlX5QNicG2IdlEgMkIgL48th9tspHcGnPq2Rk1SCR6nmfaMEnwEiMtGEzmIrgMUjLj9ntv3OOEXVjy2GG0zzE42KI4RelBVjWBkqPVVkEBCyReHN1djz-LTis7ZC2L9h7E_RZnlmxwOEnA9LpnLVDtrGI-zQEimKsX8qLvO-iOlEWQ-3U6TVlrnLbQRVo9k7-Myz8yUHiSSiQ1vLDXVeE3APZqiNOLw"
+        },
+        "connName": {
+          "type": "String",
+          "value": "office365"
+        },
+        "connRuntimeUrl": {
+          "type": "String",
+          "value": "https://201e5bef7f0a1f6e.08.common.logic-uksouth.azure-apihub.net/apim/office365/2ef510d958cb44bc8d3ec9bb8a6f32a9"
+        }
+      },
+      "parameters": {
+        "connName": {
+          "type": "String",
+          "value": "office365"
+        },
+        "location": {
+          "type": "String",
+          "value": "uksouth"
+        }
+      },
+      "parametersLink": null,
+      "providers": [
+        {
+          "id": null,
+          "namespace": "Microsoft.Web",
+          "providerAuthorizationConsentState": null,
+          "registrationPolicy": null,
+          "registrationState": null,
+          "resourceTypes": [
+            {
+              "aliases": null,
+              "apiProfiles": null,
+              "apiVersions": null,
+              "capabilities": null,
+              "defaultApiVersion": null,
+              "locationMappings": null,
+              "locations": [
+                "uksouth"
+              ],
+              "properties": null,
+              "resourceType": "connections",
+              "zoneMappings": null
+            }
+          ]
+        }
+      ],
+      "provisioningState": "Succeeded",
+      "templateHash": "5001042415693931855",
+      "templateLink": null,
+      "timestamp": "2023-04-05T12:34:22.080585+00:00",
+      "validatedResources": null
+    },
+    "resourceGroup": "rg-office365-demo",
+    "tags": null,
+    "type": "Microsoft.Resources/deployments"
+  }
