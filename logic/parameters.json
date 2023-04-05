@@ -14,5 +14,9 @@
   "workflow_subscription_id": {
     "type": "String",
     "value": "@{appsetting('WORKFLOWS_SUBSCRIPTION_ID')}"
+  },
+  "api_conn_runtime_url": {
+    "type": "String",
+    "value": "@{appsetting('api_conn_runtime_url')}"
   }
 }

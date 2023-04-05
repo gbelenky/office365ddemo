@@ -7,7 +7,7 @@
       "connection": {
         "id": "/subscriptions/@parameters('workflow_subscription_id')/resourceGroups/rg-office365-demo/providers/Microsoft.Web/connections/office365"
       },
-      "connectionRuntimeUrl": "https://201e5bef7f0a1f6e.08.common.logic-uksouth.azure-apihub.net/apim/office365/2ef510d958cb44bc8d3ec9bb8a6f32a9/",
+      "connectionRuntimeUrl": "@parameters('api_conn_runtime_url')",
       "authentication": "@parameters('office-auth')"
     }
   }

@@ -143,6 +143,10 @@ resource siteLogicApp 'Microsoft.Web/sites@2021-02-01' = {
           name: 'WORKFLOWS_RESOURCE_GROUP_NAME'
           value: resourceGroup().name
         }
+        {
+          name: 'api_conn_runtime_url'
+          value: apiconn.outputs.connRuntimeUrl
+        }
       ]
       use32BitWorkerProcess: true
     }
