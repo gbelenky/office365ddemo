@@ -2,10 +2,10 @@
   "managedApiConnections": {
     "office365": {
       "api": {
-        "id": "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/providers/Microsoft.Web/locations/uksouth/managedApis/office365"
+        "id": "/subscriptions/@parameters('workflow_subscription_id')/providers/Microsoft.Web/locations/uksouth/managedApis/office365"
       },
       "connection": {
-        "id": "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-office365-demo/providers/Microsoft.Web/connections/office365"
+        "id": "/subscriptions/@parameters('workflow_subscription_id')/resourceGroups/rg-office365-demo/providers/Microsoft.Web/connections/office365"
       },
       "connectionRuntimeUrl": "https://201e5bef7f0a1f6e.08.common.logic-uksouth.azure-apihub.net/apim/office365/2ef510d958cb44bc8d3ec9bb8a6f32a9/",
       "authentication": "@parameters('office-auth')"
