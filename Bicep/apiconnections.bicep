@@ -7,6 +7,7 @@ var resourceType  = 'Microsoft.Web/locations/managedApis'
 resource office365conn 'Microsoft.Web/connections@2016-06-01' = {
   name: connName
   location: location
+  id: subscriptionResourceId('Microsoft.Web/locations/managedApis', location, connName)
   properties: {
     api: {
       brandColor: '#0078D4'
@@ -15,7 +16,7 @@ resource office365conn 'Microsoft.Web/connections@2016-06-01' = {
       iconUri: 'https://connectoricons-prod.azureedge.net/releases/v1.0.1624/1.0.1624.3220/${connName}/icon.png'
       name: connName
       type: resourceType
-      connectionRuntimeUrl: subscriptionResourceId('Microsoft.Web/locations/managedApis', location, connName)
+      id: subscriptionResourceId('Microsoft.Web/locations/managedApis', location, connName)
     }
   }
 }
