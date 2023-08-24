@@ -7,7 +7,7 @@ var resourceType  = 'Microsoft.Web/locations/managedApis'
 resource office365conn 'Microsoft.Web/connections@2016-06-01' = {
   name: connName
   location: location
-  id: subscriptionResourceId('Microsoft.Web/locations/managedApis', location, connName)
+  kind: 'V2'
   properties: {
     api: {
       brandColor: '#0078D4'
