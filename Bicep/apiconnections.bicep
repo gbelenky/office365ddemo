@@ -15,7 +15,7 @@ resource office365conn 'Microsoft.Web/connections@2016-06-01' = {
       iconUri: 'https://connectoricons-prod.azureedge.net/releases/v1.0.1624/1.0.1624.3220/${connName}/icon.png'
       name: connName
       type: resourceType
-      id: subscriptionResourceId('Microsoft.Web/locations/managedApis', location, connName)
+      connectionRuntimeUrl: subscriptionResourceId('Microsoft.Web/locations/managedApis', location, connName)
     }
   }
 }
